@@ -9,8 +9,7 @@ h1 {
 }
 
 #canvas {
-    background-color: bisque;
-    background-image: url();
+    background-image: url(./images/library-background-2.jpeg);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
