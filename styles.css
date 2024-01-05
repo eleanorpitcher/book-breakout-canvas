@@ -9,7 +9,8 @@ h1 {
 }
 
 #canvas {
-    background-image: url(./images/library-background-2.jpeg);
+    /* background-image: url(./images/library-background-2.jpeg); */
+    background-color: bisque;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -27,6 +28,18 @@ h1 {
     color: white;
     border: none;
     padding: 15px;
+    font-size: 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#score-card {
+    position: absolute;
+    display: none;
+    top: 2%;
+    right: 10%;
+    padding: 20px;
+    background-color: maroon;
+    color: white;
     font-size: 40px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

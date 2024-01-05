@@ -6,24 +6,36 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
 
-window.onload = function () {
-
-}
-
 const startButton = document.getElementById('start-button')
+const scoreCard = document.getElementById('score-card')
+const score = document.getElementById('score')
+let scoreCount = 0;
 
-class Game{
-    start(){
-        canvas.style.display = "block"
-        startButton.style.display = "none"
+
+class Player{
+    constructor(x, y, radius){
+        this.x = Math.random()*canvas.width
+        this.y = Math.random()*canvas.height
+        this.radius = radius
+    }
+    draw(){
+        ctx.fillStyle = 'blue'
+        ctx.fillRect(this.x, this.y, 100, 100)
+    }
+    moveRight(){
+        this.x+=20
+    }
+    moveLeft(){
+        this.x-=20
+    }
+    moveUp(){
+        this.y-=20
+    }
+    moveDown(){
+        this.y+=20
     }
 }
-
-startButton.addEventListener('click', function(){
-    let game = new Game()
-    game.start() 
-}) 
-
+let player = new Player(50,50,50)
 
 class Book{
     constructor(x, y, radius){
@@ -54,30 +66,7 @@ for (let i=0; i<10; i++){
 }
 
 
-class Player{
-    constructor(x, y, radius){
-        this.x = Math.random()*canvas.width
-        this.y = Math.random()*canvas.height
-        this.radius = radius
-    }
-    draw(){
-        ctx.fillStyle = 'blue'
-        ctx.fillRect(this.x, this.y, 100, 100)
-    }
-    moveRight(){
-        this.x+=20
-    }
-    moveLeft(){
-        this.x-=20
-    }
-    moveUp(){
-        this.y-=20
-    }
-    moveDown(){
-        this.y+=20
-    }
-}
-const player = new Player(50,50,50)
+
 
 window.addEventListener('keydown',(event) => {
     if (event.key === 'ArrowRight'){
@@ -94,18 +83,47 @@ window.addEventListener('keydown',(event) => {
     }
 })
 
+function updateCounter(){
+    scoreCount+=1
+    console.log(scoreCount)
+}
+
+
 function collectBooks(){
-    for (let i=0; i<bookArray.length; i++){
-        if (
+
+    for (let i=0;i<bookArray.length;i++){
+        if(
             player.x < bookArray[i].x + 50 &&
             player.x + 100 > bookArray[i].x &&
             player.y < bookArray[i].y + 50 &&
             player.y + 100 > bookArray[i].y
         ){
-            console.log('got book')
+            updateCounter()
+            bookArray.splice(i, 1)
+
+            if (scoreCount === 10){
+                alert("you've won!")
+            }
         }
     }
 }
+
+
+
+
+//         for (let i=0; i<bookArray.length; i++){
+//             if (
+//                 player.x < bookArray[i].x + 50 &&
+//                 player.x + 100 > bookArray[i].x &&
+//                 player.y < bookArray[i].y + 50 &&
+//                 player.y + 100 > bookArray[i].y
+//             ){
+//                 // console.log('got book')
+//                 updateCounter()
+//             })
+//         }
+// }
+
 
 
 class Obstacle{
@@ -148,6 +166,7 @@ for (let i =0; i<3; i++){
 }
 
 function animate(){
+    
     requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -169,4 +188,20 @@ function animate(){
         }
     }
 }
-animate()
+
+
+class Game{
+    start(){
+        canvas.style.display = "block"
+        startButton.style.display = "none"
+        scoreCard.style.display = "block"
+
+        animate()
+    }
+}
+
+startButton.addEventListener('click', function(){
+    let game = new Game()
+
+    game.start() 
+}) 
