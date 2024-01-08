@@ -8,9 +8,20 @@
 </head>
 <body>
     <h1>Book Breakout</h1>
-    <canvas id="canvas" width="1200" height="700"></canvas>
+    <canvas id="intro-canvas" width="2000" height="1000"></canvas>
+    <canvas id="canvas" width="1500" height="800"></canvas>
     <button id="start-button">Start Game</button>
     <div id="score-card">Score: <div id="score">0</div></div>
+
+    <div>
+        <h2 id="winner">You've Won</h2>
+    </div>
+
+
+    <div>
+        <h1 id="loser">You've Lost!</h1>
+        <button id="restart-game">Restart Game</button>
+    </div>
 
 </body>
 <script src="game.js"></script>

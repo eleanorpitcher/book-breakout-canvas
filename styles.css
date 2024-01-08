@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+#intro-canvas{
+    /* background-color: grey; */
+}
+
 h1 {
     font-size: 50px;
     text-align: center;
@@ -43,3 +47,56 @@ h1 {
     font-size: 40px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+#winner {
+    display: none;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: maroon;
+    border: none;
+    font-size: 60px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    animation-name: blink; 
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+#loser{
+    display: none;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: maroon;
+    border: none;
+    font-size: 60px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    animation-name: blink; 
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0%{color: red}
+    50%{color: green}
+    100%{color: red}
+}
+
+#restart-game{
+    position: absolute;
+    display: none;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    left: 50%;
+    background-color: maroon;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
