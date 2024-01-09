@@ -1,5 +1,3 @@
-
-
 // const backgroundImage = new Image();
 // backgroundImage.src = "/images/library-background-2.jpeg"
 
@@ -10,6 +8,7 @@ const ctx1 = introCanvas.getContext('2d')
 const fallingBookImage = new Image()
 fallingBookImage.src = "/images/book.png"
 
+
 class FallingBooks{
     constructor(x, y, dx, dy){
         this.x = x
@@ -19,7 +18,7 @@ class FallingBooks{
     }
 
     draw(){
-        ctx1.drawImage(fallingBookImage, this.x, this.y, 30, 30)
+        ctx1.drawImage(fallingBookImage, this.x, this.y, 70, 70)
     }
 
     update(){
@@ -29,24 +28,37 @@ class FallingBooks{
 }
 
 let books = []
-for (let i=0; i<1000;i++){
+function createBooks(){
     let x = Math.random()*innerWidth
-    let y = -1
+    let y = 0
     let dx = 4
     let dy = 4
-    books.push(new FallingBooks(x, y, dx, dy))
+
+    let book = new FallingBooks(x,y,dx,dy)
+    books.push(book)
+    book.draw()
+
+    setTimeout(createBooks, 500)
 }
+
 
 function animateStart(){
     requestAnimationFrame(animateStart)
     ctx1.clearRect(0,0,innerWidth,innerHeight)
 
+   
     for(let i=0; i<books.length;i++){
         books[i].update()
     }
-
 }
+createBooks()
 animateStart()
+
+
+
+
+
+
 
 
 //game screen
@@ -261,5 +273,5 @@ startButton.addEventListener('click', function(){
 restartButton.addEventListener('click', function(){
     let game = new Game()
 
-    // game.start()
+    game.start()
 })
