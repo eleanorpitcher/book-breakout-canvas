@@ -1,13 +1,9 @@
-// const backgroundImage = new Image();
-// backgroundImage.src = "/images/library-background-2.jpeg"
-
-//start screen animations
+//animations for the 'start game' screen
 const introCanvas = document.getElementById("intro-canvas")
 const ctx1 = introCanvas.getContext('2d')
 
 const fallingBookImage = new Image()
 fallingBookImage.src = "/images/book.png"
-
 
 class FallingBooks{
     constructor(x, y, dx, dy){
@@ -22,46 +18,36 @@ class FallingBooks{
     }
 
     update(){
-        this.y += 4
+        this.y += 2
         this.draw()
     }
 }
 
 let books = []
-function createBooks(){
-    let x = Math.random()*innerWidth
-    let y = 0
-    let dx = 4
-    let dy = 4
 
-    let book = new FallingBooks(x,y,dx,dy)
+function createBooks(){
+    let book = new FallingBooks(Math.random()*innerWidth,0)
     books.push(book)
     book.draw()
 
     setTimeout(createBooks, 500)
 }
 
-
 function animateStart(){
     requestAnimationFrame(animateStart)
     ctx1.clearRect(0,0,innerWidth,innerHeight)
-
    
     for(let i=0; i<books.length;i++){
         books[i].update()
     }
 }
+
 createBooks()
 animateStart()
 
 
 
-
-
-
-
-
-//game screen
+//initialise game on new canvas
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
@@ -70,19 +56,23 @@ const h1 = document.querySelector('h1')
 const startButton = document.getElementById('start-button')
 const scoreCard = document.getElementById('score-card')
 
-const restartButton = document.getElementById("restart-game")
+const restartButtonWon = document.getElementById("restart-game-won")
+const restartButtonLost = document.getElementById("restart-game-lost")
+
+//draw player
 
 const playerImage = new Image()
-playerImage.src = "/images/student-6.png"
+playerImage.src = "/images/student-6-no-bg.png"
+
 class Player{
     constructor(x, y, width, height){
-        this.x = Math.random()*canvas.width
-        this.y = Math.random()*canvas.height
+        this.x = 1
+        this.y = 1
         this.width = width;
         this.height = height;
     }
     draw(){
-        ctx.drawImage(playerImage, this.x, this.y, 100,120)
+        ctx.drawImage(playerImage, this.x, this.y, 80, 120)
     }
     moveRight(){
         this.x+=50
@@ -97,10 +87,13 @@ class Player{
         this.y+=50
     }
 }
-let player = new Player(50,50,50)
+let player = new Player(50,50)
+
+//draw 10 books and randomise their locations
 
 const bookImage = new Image();
 bookImage.src = "/images/book.png"
+let bookArray = []
 
 class Book{
     constructor(x, y, radius, width, height){
@@ -114,8 +107,6 @@ class Book{
         ctx.drawImage(bookImage, this.x, this.y, 50,50)
     }
 }
-
-let bookArray = []
 
 function drawBooks(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -131,6 +122,7 @@ for (let i=0; i<10; i++){
     bookArray.push(new Book(x, y, radius))
 }
 
+//move player
 
 window.addEventListener('keydown',(event) => {
     if (event.key === 'ArrowRight'){
@@ -147,16 +139,18 @@ window.addEventListener('keydown',(event) => {
     }
 })
 
+//log score in the counter
 
-const score = document.getElementById('score')
+const score = document.getElementById("score")
 let scoreCount = 0;
-console.log(scoreCount)
 
 function updateCounter(){
-    score.innerText = scoreCount
     scoreCount+=1
+    score.innerText = scoreCount
     console.log(scoreCount)
 }
+
+//logic for winning, collecting books
 
 const winnerScreen = document.getElementById("winner")
 function collectBooks(){
@@ -167,18 +161,21 @@ function collectBooks(){
             player.y < bookArray[i].y + 50 &&
             player.y + 100 > bookArray[i].y
         ){
-            updateCounter()
             bookArray.splice(i, 1)
+            updateCounter()
 
             if (scoreCount === 10){
                 // alert("you've won!")
                 canvas.style.display = 'none'
                 winnerScreen.style.display = 'block'
-                
+                restartButtonWon.style.display = 'block'
+                scoreCard.style.display = "none"
             }
         }
     }
 }
+
+//draw and move obstacle
 
 const obstacleImage = new Image()
 obstacleImage.src = "/images/librarian-3.webp"
@@ -214,12 +211,11 @@ let obstacleArray = []
 
 for (let i =0; i<3; i++){
     let radius = 100;
-    let x = Math.random()* (canvas.width-radius*2)+radius
-    let y = Math.random()* (canvas.height-radius*2)+radius
-    let dx = 3
-    let dy = 3
-    obstacleArray.push(new Obstacle(x, y, radius, dx, dy))
+
+    obstacleArray.push(new Obstacle(Math.random()* (canvas.width-radius*2)+radius, Math.random()* (canvas.height-radius*2)+radius, radius, 3, 3))
 }
+
+//logic for losing
 
 const loserScreen = document.getElementById("loser")
 function animate(){
@@ -243,11 +239,14 @@ function animate(){
             // console.log('collision')
             canvas.style.display = "none"
             loserScreen.style.display = "block"
-            restartButton.style.display = "block"
+            restartButtonLost.style.display = "block"
+            scoreCard.style.display = "none"
+            
         }
     }
 }
 
+//initialising and restarting the game
 
 class Game{
     start(){        
@@ -261,7 +260,6 @@ class Game{
 
         animate()
     }
-
 }
 
 startButton.addEventListener('click', function(){
@@ -270,8 +268,10 @@ startButton.addEventListener('click', function(){
     game.start() 
 }) 
 
-restartButton.addEventListener('click', function(){
-    let game = new Game()
+restartButtonWon.addEventListener('click', function(){
+    location.reload()
+})
 
-    game.start()
+restartButtonLost.addEventListener('click', function(){
+    location.reload()
 })

@@ -2,14 +2,15 @@ body {
     margin: 0;
 }
 
-#intro-canvas{
-    /* background-color: grey; */
+#intro-canvas {
+    
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 100px;
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 10px 4px 4px grey;
 }
 
 #canvas {
@@ -31,9 +32,16 @@ h1 {
     background-color: maroon;
     color: white;
     border: none;
-    padding: 15px;
-    font-size: 40px;
+    border-radius: 40px;
+    box-shadow: 10px 10px 10px grey;
+    padding: 30px;
+    font-size: 60px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#start-button:hover {
+    background-color: blanchedalmond;
+    color: black
 }
 
 #score-card {
@@ -42,6 +50,9 @@ h1 {
     top: 2%;
     right: 2%;
     padding: 20px;
+    border-radius: 40px;
+    box-shadow: 10px 10px 10px grey;
+    padding: 30px;
     background-color: maroon;
     color: white;
     font-size: 40px;
@@ -56,7 +67,7 @@ h1 {
     left: 50%;
     color: maroon;
     border: none;
-    font-size: 60px;
+    font-size: 80px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     animation-name: blink; 
     animation-duration: 1.5s;
@@ -68,11 +79,11 @@ h1 {
     display: none;
     transform: translate(-50%, -50%);
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     color: maroon;
     border: none;
-    font-size: 60px;
+    font-size: 80px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     animation-name: blink; 
     animation-duration: 1.5s;
@@ -82,21 +93,38 @@ h1 {
 
 @keyframes blink {
     0%{color: red}
-    50%{color: green}
+    50%{color: black}
     100%{color: red}
 }
 
-#restart-game{
+#restart-game-won{
     position: absolute;
     display: none;
     transform: translate(-50%, -50%);
-    top: 80%;
+    top: 50%;
     left: 50%;
     background-color: maroon;
     color: white;
     border: none;
-    padding: 15px;
+    border-radius: 40px;
+    box-shadow: 10px 10px 10px grey;
+    padding: 30px;
     font-size: 40px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+#restart-game-lost{
+    position: absolute;
+    display: none;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: maroon;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 10px 10px 10px grey;
+    padding: 30px;
+    font-size: 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
