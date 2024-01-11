@@ -2,9 +2,6 @@ body {
     margin: 0;
 }
 
-#intro-canvas {
-    
-}
 
 h1 {
     font-size: 100px;
@@ -13,8 +10,14 @@ h1 {
     text-shadow: 10px 4px 4px grey;
 }
 
+#game-description {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+}
+
 #canvas {
-    /* background-image: url(./images/library-background-2.jpeg); */
     background-color: bisque;
     top: 50%;
     left: 50%;
@@ -97,6 +100,19 @@ h1 {
     100%{color: red}
 }
 
+#instructions {
+    display: none;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    background-color: maroon;
+    color: white;
+    box-shadow: 10px 10px 10px grey;
+    font-size: 25px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
 #restart-game-won{
     position: absolute;
     display: none;
@@ -127,4 +143,14 @@ h1 {
     padding: 30px;
     font-size: 40px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#restart-game-won:hover {
+    background-color: blanchedalmond;
+    color: black
+}
+
+#restart-game-lost:hover {
+    background-color: blanchedalmond;
+    color: black
 }

@@ -2,12 +2,13 @@
 const introCanvas = document.getElementById("intro-canvas")
 const ctx1 = introCanvas.getContext('2d')
 
+
 const fallingBookImage = new Image()
 fallingBookImage.src = "./images/book.png"
 
 class FallingBooks{
     constructor(x, y, dx, dy){
-        this.x = x
+        this.x = Math.random()*introCanvas.width
         this.y = y
         this.dx = dx;
         this.dy = dy;
@@ -18,7 +19,7 @@ class FallingBooks{
     }
 
     update(){
-        this.y += 2
+        this.y +=5
         this.draw()
     }
 }
@@ -55,6 +56,7 @@ const ctx = canvas.getContext('2d');
 const h1 = document.querySelector('h1')
 const startButton = document.getElementById('start-button')
 const scoreCard = document.getElementById('score-card')
+const instructions = document.getElementById('instructions')
 
 const restartButtonWon = document.getElementById("restart-game-won")
 const restartButtonLost = document.getElementById("restart-game-lost")
@@ -153,6 +155,8 @@ function updateCounter(){
 //logic for winning, collecting books
 
 const winnerScreen = document.getElementById("winner")
+let animationID;
+
 function collectBooks(){
     for (let i=0;i<bookArray.length;i++){
         if(
@@ -170,6 +174,8 @@ function collectBooks(){
                 winnerScreen.style.display = 'block'
                 restartButtonWon.style.display = 'block'
                 scoreCard.style.display = "none"
+                instructions.style.display = 'block'
+                window.cancelAnimationFrame(animationID)
             }
         }
     }
@@ -212,14 +218,14 @@ let obstacleArray = []
 for (let i =0; i<3; i++){
     let radius = 100;
 
-    obstacleArray.push(new Obstacle(Math.random()* (canvas.width-radius*2)+radius, Math.random()* (canvas.height-radius*2)+radius, radius, 3, 3))
+    obstacleArray.push(new Obstacle(Math.random()* (canvas.width-radius*2)+radius, Math.random()* (canvas.height-radius*2)+radius, radius, 6, 6))
 }
 
 //logic for losing
 
 const loserScreen = document.getElementById("loser")
 function animate(){
-    requestAnimationFrame(animate)
+    animationID = requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     drawBooks()
@@ -241,6 +247,7 @@ function animate(){
             loserScreen.style.display = "block"
             restartButtonLost.style.display = "block"
             scoreCard.style.display = "none"
+            instructions.style.display = 'none'
             
         }
     }
@@ -257,6 +264,7 @@ class Game{
         winnerScreen.style.display = "none"
         loserScreen.style.display = "none"
         introCanvas.style.display = "none"
+        instructions.style.display = 'block'
 
         animate()
     }
