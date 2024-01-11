@@ -218,7 +218,7 @@ let obstacleArray = []
 for (let i =0; i<3; i++){
     let radius = 100;
 
-    obstacleArray.push(new Obstacle(Math.random()* (canvas.width-radius*2)+radius, Math.random()* (canvas.height-radius*2)+radius, radius, 5, 5))
+    obstacleArray.push(new Obstacle(Math.random()* (canvas.width-radius*2)+radius, Math.random()* (canvas.height-radius*2)+radius, radius, 4, 4))
 }
 
 //logic for losing
