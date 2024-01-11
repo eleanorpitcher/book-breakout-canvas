@@ -3,7 +3,7 @@ const introCanvas = document.getElementById("intro-canvas")
 const ctx1 = introCanvas.getContext('2d')
 
 const fallingBookImage = new Image()
-fallingBookImage.src = "/images/book.png"
+fallingBookImage.src = "./images/book.png"
 
 class FallingBooks{
     constructor(x, y, dx, dy){
@@ -62,7 +62,7 @@ const restartButtonLost = document.getElementById("restart-game-lost")
 //draw player
 
 const playerImage = new Image()
-playerImage.src = "/images/student-6-no-bg.png"
+playerImage.src = "./images/student-6-no-bg.png"
 
 class Player{
     constructor(x, y, width, height){
@@ -92,7 +92,7 @@ let player = new Player(50,50)
 //draw 10 books and randomise their locations
 
 const bookImage = new Image();
-bookImage.src = "/images/book.png"
+bookImage.src = "./images/book.png"
 let bookArray = []
 
 class Book{
@@ -178,7 +178,7 @@ function collectBooks(){
 //draw and move obstacle
 
 const obstacleImage = new Image()
-obstacleImage.src = "/images/librarian-3.webp"
+obstacleImage.src = "./images/librarian-3.webp"
 
 class Obstacle{
     constructor(x,y,radius,dx,dy){
