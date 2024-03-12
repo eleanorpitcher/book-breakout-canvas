@@ -7,33 +7,37 @@
     <title>Book Breakout</title>
 </head>
 <body>
-    <h1>BOOK BREAKOUT</h1>
+    <div id="intro-container">
+        <h1 id='intro-text'>BOOK BREAKOUT</h1>
+        <button id="start-button">START GAME</button>
+    </div>
     
     <canvas id="intro-canvas" width="2000" height="1500"></canvas>
-
     <canvas id="canvas" width="1200" height="700"></canvas>
-    
-    <button id="start-button">START GAME</button>
     <div id="score-card">Score: <div id="score"></div></div>
 
-
     <div id="instructions">
-        <p>Use the arrow keys <br>
-            to guide the player</p>
+        <h2>How to Play?</h2>
+        <p>1. Use the arrow keys to guide the player <br>2. Avoid the librarians <br>3. Collect all 10 books to move to the next level</p>
     </div>
 
     <div>
-        <h1 id="loser">You've Lost...</h1>
+        <h3 id="loser">Oh no... You got caught!</h3>
         <button id="restart-game-lost">TRY AGAIN?</button>
     </div>
 
     <div>
-        <h2 id="winner">You've Won!</h2>
+        <h2 id="winner">Congratulations! You collected all the books without being caught.</h2>
         <button id="restart-game-won">RESTART GAME</button>
     </div>
+
+    <div id="lifeCount">Lives: <span id="lives">3</span></div>
+
 
 
 </body>
 <script src="game.js"></script>
 <script src="script.js"></script>
 </html>
+
+

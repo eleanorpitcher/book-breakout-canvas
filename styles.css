@@ -1,36 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 body {
     margin: 0;
+    font-family: 'Indie Flower', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
 }
 
-
 h1 {
-    font-size: 100px;
+    font-size: 5rem;
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-shadow: 10px 4px 4px grey;
+    font-family: 'Indie Flower';
+    color: white
 }
 
 #game-description {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 30px;
     text-align: center;
     display: block;
+    font-family: 'Indie Flower';
+}
+
+#intro-container {
+    text-align:center;
+}
+
+#intro-text {
+    position: relative;
+    z-index: 3
+}
+
+#intro-canvas {
+    position: absolute;
+    background-image: url('./images/intro-bg-img.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 #canvas {
-    background-color: bisque;
+    /* background-image: url('./images/library-background-2.jpeg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: fixed;
     display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2
 }
 
 #start-button {
     position: absolute;
     display: block;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 40%;
     left: 50%;
     background-color: maroon;
     color: white;
@@ -38,8 +72,9 @@ h1 {
     border-radius: 40px;
     box-shadow: 10px 10px 10px grey;
     padding: 30px;
-    font-size: 60px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 40px;
+    font-family: 'Indie Flower';
+    z-index: 1;
 }
 
 #start-button:hover {
@@ -51,73 +86,61 @@ h1 {
     position: absolute;
     display: none;
     top: 2%;
-    right: 2%;
+    right: 10%;
     padding: 20px;
-    border-radius: 40px;
-    box-shadow: 10px 10px 10px grey;
-    padding: 30px;
-    background-color: maroon;
+    background-color: transparent;
     color: white;
-    font-size: 40px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 50px;
+    font-family: 'Indie Flower';
 }
 
 #winner {
     display: none;
     transform: translate(-50%, -50%);
     position: absolute;
-    top: 10%;
+    top: 20%;
     left: 50%;
-    color: maroon;
+    color: white;
     border: none;
     font-size: 80px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    animation-name: blink; 
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    font-family: 'Indie Flower';
+    text-align: center;
 }
 
 #loser{
     display: none;
     transform: translate(-50%, -50%);
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
-    color: maroon;
+    color: white;
     border: none;
     font-size: 80px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    animation-name: blink; 
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-}
-
-@keyframes blink {
-    0%{color: red}
-    50%{color: black}
-    100%{color: red}
+    font-family: 'Indie Flower';
+    text-align: center;
 }
 
 #instructions {
-    display: none;
+    display: block;
     position: absolute;
-    top: 2%;
-    left: 2%;
-    background-color: maroon;
-    color: white;
+    bottom: 10%;
+    width: 40vw;
+    text-align: center;
+    background-color: bisque;
+    color: black;
     box-shadow: 10px 10px 10px grey;
     font-size: 25px;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: 'Indie Flower';
+    
 }
 
 #restart-game-won{
     position: absolute;
     display: none;
     transform: translate(-50%, -50%);
-    top: 50%;
+    bottom: 10%;
     left: 50%;
     background-color: maroon;
     color: white;
@@ -126,14 +149,14 @@ h1 {
     box-shadow: 10px 10px 10px grey;
     padding: 30px;
     font-size: 40px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Indie Flower';
 }
 
 #restart-game-lost{
     position: absolute;
     display: none;
     transform: translate(-50%, -50%);
-    top: 50%;
+    bottom: 20%;
     left: 50%;
     background-color: maroon;
     color: white;
@@ -142,7 +165,7 @@ h1 {
     box-shadow: 10px 10px 10px grey;
     padding: 30px;
     font-size: 40px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Indie Flower';
 }
 
 #restart-game-won:hover {
